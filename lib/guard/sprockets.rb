@@ -32,7 +32,7 @@ module Guard
     end
     
     def run_all
-      true
+      run_on_change("")
     end
 
     def run_on_change(paths)
