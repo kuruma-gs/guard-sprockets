@@ -7,7 +7,7 @@ require 'sprockets'
 module Guard
   class Sprockets < Guard
     def initialize(watchers=[], options={})
-      super 
+      super(watchers,options)
       
       # init Sprocket env for use later
       @sprockets_env = ::Sprockets::Environment.new

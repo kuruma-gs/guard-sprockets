@@ -4,7 +4,7 @@ $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = "guard-sprockets"
-  s.version     = "0.2.0" #Guard::Sprockets::VERSION
+  s.version     = "0.2.1" #Guard::Sprockets::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Aaron Cruz", 'Kematzy']
   s.email       = ["aaron@aaroncruz.com", "kematzy at gmail"]
