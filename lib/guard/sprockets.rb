@@ -28,15 +28,19 @@ module Guard
        UI.info " -- external asset paths = [#{@asset_paths.inspect}]" unless @asset_paths.empty?
        UI.info " -- destination path = [#{@destination.inspect}]"
        UI.info "Sprockets is ready and waiting for some file changes..."
-       run_on_change("")
+       run_all
     end
     
     def run_all
-      run_on_change("")
+      run_on_change(@main_files)
     end
 
     def run_on_change(paths)
-      @main_files.each{|f| sprocketize(f)}
+      compile_dirs = paths.map{|p| p.gsub(/\/.*/,"")}.uniq
+      UI.info "GuardSprockets catched #{compile_dirs} updates"
+      @main_files.each do |f| 
+        sprocketize(f) if compile_dirs.include? f.gsub(/\/.*/,"")
+      end
       true
     end
     
