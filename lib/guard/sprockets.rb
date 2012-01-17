@@ -13,6 +13,7 @@ module Guard
       @sprockets_env = ::Sprockets::Environment.new
       
       @asset_paths = options.delete(:asset_paths) || []
+      @main_files = options.delete(:main_files) || []
       # add the asset_paths to the Sprockets env
       @asset_paths.each do |p|
         @sprockets_env.append_path p
@@ -27,6 +28,7 @@ module Guard
        UI.info " -- external asset paths = [#{@asset_paths.inspect}]" unless @asset_paths.empty?
        UI.info " -- destination path = [#{@destination.inspect}]"
        UI.info "Sprockets is ready and waiting for some file changes..."
+       run_on_change("")
     end
     
     def run_all
@@ -34,7 +36,7 @@ module Guard
     end
 
     def run_on_change(paths)
-      paths.each{ |js| sprocketize(js) }
+      @main_files.each{|f| sprocketize(f)}
       true
     end
     
