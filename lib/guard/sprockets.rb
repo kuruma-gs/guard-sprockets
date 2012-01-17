@@ -37,7 +37,7 @@ module Guard
 
     def run_on_change(paths)
       compile_dirs = paths.map{|p| p.gsub(/\/.*/,"")}.uniq
-      UI.info "GuardSprockets catched #{compile_dirs} updates"
+      UI.info "Guard-Sprockets catched #{compile_dirs} updates"
       @main_files.each do |f| 
         sprocketize(f) if compile_dirs.include? f.gsub(/\/.*/,"")
       end
